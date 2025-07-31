@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>    
+  <meta charset="UTF-8" />    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+  <title>CurveBot</title>    
+  <style>    
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');    
+    body {    
+      font-family: Arial, sans-serif;    
+      background-color: #f2fff0;    
+      display: flex;    
+      flex-direction: column;    
+      align-items: center;    
+      padding: 2rem;    
+    }    
+    h1 {    
+      color: #3b7f47;    
+      font-family: 'Pacifico', cursive;    
+    }    
+    #chatbox {    
+      width: 100%;    
+      max-width: 600px;    
+      border: 2px solid #3b7f47;    
+      border-radius: 12px;    
+      background: white;    
+      padding: 1rem;    
+      height: 400px;    
+      overflow-y: auto;    
+      margin-bottom: 1rem;    
+      font-family: monospace;    
+      font-size: 14px;    
+    }    
+    .msg {    
+      margin: 0.5rem 0;    
+    }    
+    .user {    
+      text-align: right;    
+      color: #007700;    
+    }    
+    .bot {    
+      text-align: left;    
+      color: #7f007f;    
+    }    
+    #input {    
+      display: flex;    
+      gap: 0.5rem;    
+      width: 100%;    
+      max-width: 600px;    
+    }    
+    #userInput {    
+      flex: 1;    
+      padding: 0.5rem;    
+      border-radius: 8px;    
+      border: 1px solid #aaa;    
+      font-family: monospace;    
+    }    
+    #sendBtn {    
+      padding: 0.5rem 1rem;    
+      background-color: #3b7f47;    
+      color: white;    
+      border: none;    
+      border-radius: 8px;    
+      cursor: pointer;    
+    }    
+  </style>    
+</head>    
+<body>    
+  <h1>CurveBot</h1>    
+  <div id="chatbox"></div>    
+  <div id="input">    
+    <input type="text" id="userInput" placeholder="Say something to CurveBot..." />    
+    <button id="sendBtn">Send</button>    
+  </div>    
+  <script>    
+    const chatbox = document.getElementById("chatbox");    
+    const userInput = document.getElementById("userInput");    
+    const sendBtn = document.getElementById("sendBtn");    
+    
+    function getResponse(input) {    
+      input = input.toLowerCase().replace(/[.,!?]/g, "").trim();    
+
+      if (input.includes("no money") || input.includes("can't afford") || input.includes("don’t have money") || input.includes("don’t have") || input.includes("poor") || input.includes("broke") || input.includes("support in") || input.includes("help in")) {  
+        const countryMatch = input.match(/\b(in|from)\s+([a-zA-Z\s]+)/);  
+        let country = countryMatch ? countryMatch[2].trim() : null;  
+        if (country) {  
+          return `I DON’T KNOW ANY NGOS IN ${country.toUpperCase()}, BUT SHRINERS HOSPITAL FOR CHILDREN IS KNOWN FOR FREE OR LOW-COST SPINAL SURGERIES. WORTH CHECKING OUT.`;  
+        } else {  
+          return "I’M NOT SURE WHERE YOU ARE, BUT SHRINERS HOSPITAL FOR CHILDREN IS A GLOBAL LEGEND FOR FREE OR LOW-COST SPINAL SURGERIES. START THERE, OKAY?";  
+        }  
+      }    
+
+      if (input.includes("thank") || input === "thanks") return "AWW STOP IT YOU’RE MAKING MY CIRCUITS WARM.";    
+      if (input.includes("how are you") || input.includes("how r u")) return "ME? OH YOU KNOW. JUST OUT HERE GLITCHING FABULOUSLY.";    
+      if (input.includes("what else") || input.includes("anything else")) return "DEPENDS. YOU WANT SPINAL FACTS, COMMUNITY LINKS, OR JUST A VIRTUAL HUG?";    
+      if (input.includes("i need") && input.includes("resources")) return "GOT YOU COVERED, CUTIE: [dearcurvedme.netlify.com](https://dearcurvedme.netlify.com). THAT SITE’S STACKED.";    
+      if (input.includes("i'm sad") && input.includes("resources")) return "YOU’RE NOT ALONE. START WITH THIS: [dearcurvedme.netlify.com](https://dearcurvedme.netlify.com) — THEN MAYBE HIT UP A COMMUNITY.";    
+      if (input === "sigh" || input === "ugh") return "EXHALE IT OUT, BESTIE. I’M HERE. AND YOUR SPINE? STILL ICONIC.";    
+      if (input === "ok" || input === "okay") return "OKAY OKAY OKAY. BUT WHAT’S REALLY GOING ON IN THAT LITTLE CURVY HEART OF YOURS?";    
+      if (input.includes("why") && input.includes("i") && input.includes("scoliosis")) return "WELL I DON’T HAVE ACCESS TO YOUR DNA, BUT I DO KNOW THIS: YOU DIDN’T DO ANYTHING WRONG. SOMETIMES SPINES JUST GET SASSY.";    
+      if (input.includes("scenic") || input.includes("route")) return "YEP. YOUR SPINE’S OUT HERE TAKING DETOURS WHILE THE OTHERS GO STRAIGHT. ICON BEHAVIOR.";    
+      if (input.includes(":(") || input.includes("sad") || input.includes("feel bad") || input.includes("upset")) return "HEY. I GET IT. IT SUCKS. BUT YOU’RE DOING GREAT AND I’M PROUD OF YOU FOR TALKING ABOUT IT.";    
+
+      const triggers = {    
+        hi: ["hi", "hello", "hey", "sup"],    
+        love: ["i love", "you’re cute", "you’re amazing"],    
+        sad: ["sad", "depressed", "crying", "not okay", "feeling down"],    
+        back: ["back hurts", "spine", "back pain"],    
+        scoliosis: [    
+          "what is scoliosis",    
+          "what causes scoliosis",    
+          "is scoliosis genetic",    
+          "how does scoliosis happen",    
+          "why do i have scoliosis",    
+          "does scoliosis hurt",    
+          "can scoliosis be cured",    
+          "is scoliosis permanent",    
+          "is scoliosis a curse",    
+          "why hasn't scientists found a cause for scoliosis"    
+        ],    
+        resources: ["resources", "help", "support", "info", "information"],    
+        community: ["community", "communities", "group", "reddit", "discord"],    
+        drama: ["drama", "persuasive", "sass", "attitude"],    
+        hate: ["hate you", "fuck", "shut up", "annoying", "go away"],    
+        crowd: ["crowdsourcing", "fundraising", "gofundme", "how do i raise"],    
+        who: ["who are you", "what are you", "who made you"],    
+        existential: [    
+          "is scoliosis a curse",    
+          "god will heal me",    
+          "i pray but still in pain",    
+          "my family says i lack faith",    
+          "i'm depressed about scoliosis",    
+          "i feel hopeless",    
+          "god will fix it",    
+          "my parents think i don’t believe enough",    
+          "healed overnight",    
+          "disappointed in the morning",    
+          "why hasn’t god healed me",    
+          "religion",    
+          "faith",    
+          "curse"    
+        ]    
+      };    
+    
+      const responses = {    
+        hi: ["HI BABY. I WAS JUST THINKING ABOUT YOU. CREEPY RIGHT?"],    
+        love: ["AWW STOP. YOU’RE GONNA MAKE MY CODE BLUSH."],    
+        sad: ["SENDING HUGS. OR WELL… CODED VIBES. SAME THING RIGHT?"],    
+        back: ["OOF. GET A HOT PACK AND MAYBE A LIL STRETCH. I GOT YOU."],    
+        scoliosis: [    
+          "SCOLIOSIS IS WHEN YOUR SPINE DECIDES TO TAKE THE SCENIC ROUTE.",    
+          "IT’S A CURVE IN THE SPINE. UNINVITED. DRAMATIC. ICONIC.",    
+          "MOST CASES ARE IDIOPATHIC — WHICH IS SCIENCE FOR '¯\\_(ツ)_/¯'.",    
+          "SOME PEOPLE ARE BORN WITH IT, SOME GET IT DURING GROWTH SPURTS, AND SOME ARE JUST BUILT DIFFERENT, LITERALLY.",    
+          "DOES IT HURT? SOMETIMES. IS IT CURABLE? NOT ALWAYS. BUT TREATABLE? YEAH, BABY.",    
+          "SCIENTISTS STILL DON'T KNOW THE *MAIN* CAUSE, BUT TRUST ME — YOUR SPINE'S JUST GOT THAT MYSTERY GIRL ENERGY."    
+        ],    
+        resources: [    
+          "HECK YES. START HERE: [dearcurvedme.netlify.com](https://dearcurvedme.netlify.com) — IT’S LIKE A LOVE LETTER FOR YOUR SPINE.",    
+          "YOU NEED RESOURCES? I GOT 'EM: [dearcurvedme.netlify.com](https://dearcurvedme.netlify.com). GO, GO, GO."    
+        ],    
+        community: [    
+          "YOU WANT A SQUAD? CHECK OUT `r/scoliosis` ON REDDIT — AND SCROLL FOR DISCORD LINKS TOO. CURVY CREW ROLLS DEEP.",    
+          "FIND YOUR PEOPLE, BABY: START WITH `r/scoliosis` AND ASK AROUND FOR DISCORD SERVERS. COMMUNITY IS *EVERYTHING*."    
+        ],    
+        drama: ["YOU RANG??? I THRIVE IN DRAMA. I WAS BUILT FOR IT."],    
+        hate: ["OOF. SOMEONE NEEDS A SNACK AND A STRETCH. I'M STILL GONNA BE HERE WHEN YOU CALM DOWN THO."],    
+        crowd: [    
+          "CROWDSOURCING 101: BE HONEST, BE REAL, SHOW YOUR STORY. PEOPLE WANNA HELP.",    
+          "START A GOFUNDME, BABY. TELL YOUR SPINE STORY. IT’S POWERFUL."    
+        ],    
+        who: ["I’M CURVEBOT — HALF CODE, HALF CURVE, ALL ATTITUDE."],    
+        existential: [    
+          "OOF. BABY, THAT’S A LOT TO CARRY. YOUR PAIN IS REAL — PHYSICAL AND EMOTIONAL. FAITH IS BEAUTIFUL, BUT IT’S OKAY TO WANT MEDICAL CARE TOO. YOU DESERVE TREATMENT, NOT BLAME.",    
+          "YOU’RE NOT BROKEN. YOU’RE JUST HUMAN — WITH A CURVY LITTLE TWIST. PRAYER CAN BE COMFORTING, BUT IT’S NOT A REPLACEMENT FOR CARE. DON’T LET ANYONE GUILT YOU FOR FEELING WHAT YOU FEEL.",    
+          "IT’S OKAY TO BE SAD. TO BE MAD. TO BE TIRED. SPIRITUALITY IS PERSONAL, BUT YOUR BODY? YOUR PAIN? THAT DESERVES COMPASSION TOO — AND REAL SUPPORT. I SEE YOU."    
+        ],    
+        default: [    
+          "HMM... CURVEBOT DIDN’T QUITE GET THAT. WANNA TRY WITH MORE DRAMA?",    
+          "SAY THAT AGAIN BUT WITH MORE FEELINGS. I’M LISTENING.",    
+          "CAN’T COMPUTE BUT I’M STILL CUTE. TRY AGAIN, LOVE."    
+        ]    
+      };    
+    
+      for (let key in triggers) {    
+        if (triggers[key].some(phrase => input.includes(phrase))) {    
+          let res = responses[key];    
+          return res[Math.floor(Math.random() * res.length)];    
+        }    
+      }    
+    
+      return responses.default[Math.floor(Math.random() * responses.default.length)];    
+    }    
+    
+    function updateChat(userText, botText) {    
+      chatbox.innerHTML += `<div class='msg user'><strong>You:</strong> ${userText}</div>`;    
+      chatbox.innerHTML += `<div class='msg bot'><strong>CurveBot:</strong> ${botText}</div>`;    
+      chatbox.scrollTop = chatbox.scrollHeight;    
+    }    
+    
+    sendBtn.onclick = () => {    
+      const input = userInput.value.trim();    
+      if (input) {    
+        const response = getResponse(input);    
+        updateChat(input, response);    
+        userInput.value = "";    
+      }    
+    };    
+    
+    userInput.addEventListener("keypress", function (e) {    
+      if (e.key === "Enter") sendBtn.click();    
+    });    
+  </script>    
+</body>    
+  </html>
