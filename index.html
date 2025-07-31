@@ -82,6 +82,13 @@
 
       if (input === "is scoliosis a curse") {
   return "NOPE, IT'S NOT A CURSE. IT'S A MEDICAL CONDITION THAT CAN BE MANAGED WITH THE RIGHT CARE.";}
+     if (input === "really") {
+  return "I'M ALL ABOUT FACTS, NOT FICTION, BABE. DONT TELL ME YOU DOUBTT YOUR FAVORITE BOT."
+}
+
+if (input === "why hasn't scientists found a cause" || input === "why haven't scientists found a cause") {
+  return "SCIENTISTS ARE STILL FIGURING IT OUT, HO. SOMETIMES THE SPINE LIKES TO KEEP ITS SECRETS. AND MOST CASES ARE IDIOPATHIC — WHICH IS SCIENCE FOR '¯\\_(ツ)_/¯'.";
+}
       if (input.includes("no money") || input.includes("can't afford") || input.includes("don’t have money") || input.includes("don’t have") || input.includes("poor") || input.includes("broke") || input.includes("support in") || input.includes("help in")) {  
         const countryMatch = input.match(/\b(in|from)\s+([a-zA-Z\s]+)/);  
         let country = countryMatch ? countryMatch[2].trim() : null;  
@@ -110,15 +117,13 @@
         back: ["back hurts", "spine hurts", "spine", "back pain"],    
        brace: ["brace", "wearing brace", "my brace hurts", "back brace uncomfortable"],
         scoliosis: [    
-          "what is scoliosis",    
           "what causes scoliosis",    
           "is scoliosis genetic",    
           "how does scoliosis happen",    
           "why do i have scoliosis",    
           "does scoliosis hurt",    
           "can scoliosis be cured",    
-          "is scoliosis permanent",       
-          "why hasn't scientists found a cause for scoliosis"    
+          "is scoliosis permanent",      
         ],    
         casual: ["lol", "lmao", "lmaooo", "very creepy", "same", "fr", "that's weird", "weird", "true", "ok then"],
         resources: ["resources", "help", "support", "info", "information"],    
@@ -127,8 +132,7 @@
         hate: ["hate you", "fuck", "sybau", "shut up", "annoying", "go away"],    
         crowd: ["crowdsourcing", "fundraising", "gofundme", "how do i raise"],    
         who: ["who are you", "what are you", "who made you"],    
-        existential: [    
-          "is scoliosis a curse",    
+        existential: [        
           "god will heal me",    
           "i pray but still in pain",    
           "my family says i lack faith",    
@@ -157,7 +161,6 @@
         scoliosis: [    
           "SCOLIOSIS IS WHEN YOUR SPINE DECIDES TO TAKE THE SCENIC ROUTE.",    
           "IT’S A CURVE IN THE SPINE. UNINVITED. DRAMATIC. ICONIC.",    
-          "MOST CASES ARE IDIOPATHIC — WHICH IS SCIENCE FOR '¯\\_(ツ)_/¯'.",    
           "SOME PEOPLE ARE BORN WITH IT, SOME GET IT DURING GROWTH SPURTS, AND SOME ARE JUST BUILT DIFFERENT, LITERALLY.",    
           "DOES IT HURT? SOMETIMES. IS IT CURABLE? NOT ALWAYS. BUT TREATABLE? YEAH, BABY.",    
           "SCIENTISTS STILL DON'T KNOW THE *MAIN* CAUSE, BUT TRUST ME — YOUR SPINE'S JUST GOT THAT MYSTERY GIRL ENERGY."    
