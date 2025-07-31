@@ -80,6 +80,8 @@
     function getResponse(input) {    
       input = input.toLowerCase().replace(/[.,!?]/g, "").trim();    
 
+      if (input === "is scoliosis a curse") {
+  return "NOPE, IT'S NOT A CURSE. IT'S A MEDICAL CONDITION THAT CAN BE MANAGED WITH THE RIGHT CARE.";}
       if (input.includes("no money") || input.includes("can't afford") || input.includes("don’t have money") || input.includes("don’t have") || input.includes("poor") || input.includes("broke") || input.includes("support in") || input.includes("help in")) {  
         const countryMatch = input.match(/\b(in|from)\s+([a-zA-Z\s]+)/);  
         let country = countryMatch ? countryMatch[2].trim() : null;  
